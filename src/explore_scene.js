@@ -15,10 +15,14 @@ export class ExploreScene extends Phaser.Scene {
     for (const asset in assets) {
       this.load.image(asset, assets[asset]);
     }
+    //Load Tilemap
+    this.load.image('tiles', 'assets/test_tilemap.png');
   }
   create() {
     console.log('ExploreScene created');
     this.spriteManager = new SpriteManager(this);
+    const map = this.make.tilemap({ key: 'map' });
+    const tileset = map.addTilesetImage('tiles', null, 48, 48, 0, 0);
     this.spriteManager.createCharacter(100, 100);
     this.spriteManager.createEnemy(200, 200);
   }

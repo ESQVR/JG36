@@ -21,13 +21,19 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
         this.candle = scene.add.sprite(400, 300, 'candle').setOrigin(0.5, 0.5);
         this.candle.setScale(0.3); // Adjust the scale as needed
         this.candleHeld = true;
-
+        this.candle.maxVitality = 1000;
+        this.candle.vitality = this.candle.maxVitality;
+        this.candle.setDepth(1);
         this.candle.setInteractive()
         this.candle.on('pointerdown', function(pointer) {
             this.candleHeld = !this.candleHeld;
         }, this);
         scene.input.on('pointermove', (pointer) => {
             if (this.candleHeld == false) return;
+            // Calculate distance moved
+            const distance = Phaser.Math.Distance.Between(this.candle.x, this.candle.y, pointer.x, pointer.y);
+            this.candle.vitality -= distance;;
+
             this.candle.x = pointer.x;
             this.candle.y = pointer.y;
         });
@@ -52,5 +58,10 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
             this.setVelocityY(0);
         }
         
+        if (this.candle.vitality <= 0) {
+            this.candle.destroy();
+        }
+        this.candle.vitality += 10;
+        this.candle.setAlpha(this.candle.vitality / this.candle.maxVitality);
     }
 }
