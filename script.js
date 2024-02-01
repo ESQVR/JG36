@@ -32,20 +32,26 @@ var spell = document.querySelector('.spell');
 var speech = document.querySelector('.speech');
 var button = document.querySelector('button');
 
-function search(ele) {
+speech.addEventListener('keydown', function (event) {
+    console.log(event.key);
+    if (event.key === ' '){
+        event.preventDefault();
+        console.log("Spacebar");
+        speech.value += ' ';
+    }
     if (event.key === 'Enter') {
-        speech.value = ele.value;
+        speech.value = this.value;
         if (speech.value === spell.textContent){
             speech.style.background = 'lime';
             var audio = new Audio(sound[randomAudio()]);
             audio.play();
-            return;
         }
         else {
             speech.style.background = 'red';
         }
     }
-}
+})
+
 
 function randomIncantation() {
     return Math.floor(Math.random() * book.length);
@@ -158,3 +164,24 @@ recognition.onerror = function(event) {
 }
 
 button.addEventListener('click', testSpeech);
+//     // Check if the pressed key is the spacebar (keyCode 32)
+//     // if (event.key == "Space"){
+//     // if (event.keyCode == 32){
+//     if (event.key === ' '){
+//         // Prevent the default action of the spacebar
+//         event.preventDefault();
+//         console.log("Spacebar");
+//     }
+//     // if (this.enableKeyboardNavigation) {
+//     //       $(document).keydown(function(e) {
+//     //        var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+//     //        switch(key) {
+//     //         case 32: // space
+//     //          gallery.next();
+//     //          e.preventDefault();
+//     //          break;
+//     //        }
+//     //       })
+//     // }
+//     // Add your custom logic here if needed
+// });
