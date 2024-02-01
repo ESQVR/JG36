@@ -5,3 +5,5 @@
 [] Build binaries containing tts for all major os (win/lin/mac)
 [] add \' to encapsulate strcmp
 [] search() event.key deprecated?
+[] block input field/cli on mov phase
+[] input field might generate issues with phaser mov phase so should be disabled
