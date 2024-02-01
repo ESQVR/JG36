@@ -1,0 +1,7 @@
+[] voice recognition on imported on phaser
+[] then make cli in js solving word puzzle/codemasters
+[] wordpuzzle respond to string coming in out
+[] make repo Typescript
+[] Build binaries containing tts for all major os (win/lin/mac)
+[] add \' to encapsulate strcmp
+[] search() event.key deprecated?
