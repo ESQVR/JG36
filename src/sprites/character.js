@@ -41,7 +41,7 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
         this.setInteractive();
         this.setCollideWorldBounds(true);
 
-        this.cursors = this.scene.input.keyboard.addKeys('W,A,S,D,UP,DOWN,LEFT,RIGHT');
+        this.cursors = this.scene.input.keyboard.addKeys('W,A,S,D');
 
         // Create the candle
         this.candle = new Candle(scene, 400, 300);
@@ -56,7 +56,7 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
         } else {
             this.setVelocityX(0);
         }
-    
+
         if (this.cursors.W.isDown || this.cursors.UP.isDown) {
             this.setVelocityY(-200);
         } else if (this.cursors.S.isDown || this.cursors.DOWN.isDown) {
