@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+html {
+  height: 100%;
+  width: 100%;
+}
+=======
 body, html {
   margin: 0;
 }
@@ -60,3 +66,4 @@ button {
 .spell {
   font-weight: bold;
 }
+>>>>>>> df091792ef8a190b4fb7e1a267d3bc12921d7e6f
