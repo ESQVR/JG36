@@ -24,6 +24,7 @@ export class DialogueBox {
 
 		// Create dialogue box sprites and position them
 		this._dialogueBoxSprite = scene.add.sprite(x, y, 'dialogueBoxBackground');
+        this._dialogueBoxSprite.setOrigin(0, 0);
 		this._messageText = scene.add.text(x, y + 20, message, {fontSize: 20});
 
 		// scroll factor to zero
@@ -41,8 +42,12 @@ export class DialogueBox {
 		// const boxBounds = this._dialogueBoxSprite.texture.getBounds();
 		const boxBounds = new Phaser.Geom.Rectangle(this._dialogueBoxSprite.x, this._dialogueBoxSprite.y, this._dialogueBoxSprite.texture.width, this._dialogueBoxSprite.texture.height);
 
-		// Check if click was outside the box
-		if (! boxBounds.contains(pointer.x, pointer.y)) {
+		// check if click was for candle
+        console.log(this.scene.spriteManager.player.candle.getBounds())
+        console.log(pointer.x, pointer.y)
+        const worldPoint = this.scene.cameras.main.getWorldPoint(pointer.x, pointer.y);
+        console.log(this.scene.spriteManager.player.candle.getBounds().contains(pointer.x, pointer.y))
+		if (!this.scene.spriteManager.player.candle.getBounds().contains(worldPoint.x, worldPoint.y)) {
 			console.log("click outside box")
 			this.hideDialogueBox();
 		}
