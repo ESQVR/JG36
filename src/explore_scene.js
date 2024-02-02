@@ -10,11 +10,14 @@ export class ExploreScene extends Phaser.Scene {
     super('ExploreScene')
     
     this.dungeonManager = new DungeonManager(this);
+    
   }
   preload() {
     //TESTING BACKGROUND
     this.load.image('background', 'assets/Static_Test_Room_Bkgrd.png');
 
+    this.load.audio('main_music', ['assets/audio/Main_Game_Theme.mp3']);
+    
     //Load textures
     // const assets = {
     //   ...Character.getTextures(),
@@ -35,6 +38,9 @@ export class ExploreScene extends Phaser.Scene {
 
     //this.cameras.main.setBackgroundColor(0x0000ff);
     console.log('ExploreScene created');
+
+    const main_music = this.sound.add('main_music', { loop: true });
+    main_music.play();
 
 
     // //spriteManager
@@ -59,7 +65,7 @@ export class ExploreScene extends Phaser.Scene {
       if (clickedTile) {
         //return if candle is held
         if (this.spriteManager.player.candle.candleHeld == true) return;
-        
+
         // Do something with the clicked tile information
         console.log(`Clicked tile: ${tileX}, ${tileY}`);
         const formatted_string = `Tile ID: ${clickedTile.index}`
