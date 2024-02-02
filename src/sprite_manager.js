@@ -18,6 +18,7 @@ export class SpriteManager {
 
     handlePlayerEnemyCollision(player, enemy) {
         console.log('Enemy touched the player\n\n\n\n\n');
+        this.scene.game.sound.stopAll();
         enemy.destroy();
         //restart the game HARD
         this.scene.scene.restart();
