@@ -61,6 +61,10 @@ export class ExploreScene extends Phaser.Scene {
         console.log(`Clicked tile: ${tileX}, ${tileY}`);
         const formatted_string = `Tile ID: ${clickedTile.index}`
         console.log(formatted_string);
+
+        // return if the tile index is undefined
+        if (!clickedTile.index) return;
+        
         const boxX = this.cameras.main.centerX - 50;
         const boxY = this.cameras.main.centerY - 50;
         const dialogue = new DialogueBox(this, formatted_string, boxX, boxY);
