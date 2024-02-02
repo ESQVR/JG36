@@ -59,8 +59,11 @@ export class ExploreScene extends Phaser.Scene {
       if (clickedTile) {
         // Do something with the clicked tile information
         console.log(`Clicked tile: ${tileX}, ${tileY}`);
-        console.log(`Tile ID: ${clickedTile.index}`);
-        const dialogue = new DialogueBox(this, 'Test ${clickedTile.index}', 500, 500);
+        const formatted_string = `Tile ID: ${clickedTile.index}`
+        console.log(formatted_string);
+        const boxX = this.cameras.main.centerX - 50;
+        const boxY = this.cameras.main.centerY - 50;
+        const dialogue = new DialogueBox(this, formatted_string, boxX, boxY);
       }
     });
   }
