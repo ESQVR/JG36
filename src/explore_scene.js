@@ -4,7 +4,6 @@ import { SpriteManager } from './sprite_manager.js';
 import { DungeonManager } from './dungeon_manager.js';
 import { DialogueBox } from './dialogue_box.js';
 
-let counter = 0;
 export class ExploreScene extends Phaser.Scene {
   constructor() {
     super('ExploreScene')
@@ -91,14 +90,7 @@ export class ExploreScene extends Phaser.Scene {
       }
     });
   }
-
- 
   update() {
-    if (counter < 10)
-    {
-      counter++;
-      console.log('ExploreScene update');
-    }
     this.spriteManager.update();
     this.dungeonManager.update();
   }
