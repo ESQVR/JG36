@@ -47,7 +47,7 @@ export class VignetteEffect {
 
         // Create vignette sprite
         this.vignetteSprite = this.scene.add.sprite(0, 0, 'vignetteTexture');
-        this.vignetteSprite.setOrigin(0.5);
+        this.vignetteSprite.setOrigin(.5);
         this.vignetteSprite.setDepth(2);
         this.vignetteSprite.setScrollFactor(0);
         
@@ -59,7 +59,7 @@ export class VignetteEffect {
         this.vignetteSprite.setScale(ZERO_SCALE * (1 - light_value) + ONE_SCALE * light_value);
 
         //follow target
-        this.vignetteSprite.x = this.targetSprite.x;
-        this.vignetteSprite.y = this.targetSprite.y;
+        this.vignetteSprite.x = this.targetSprite.screen_x;
+        this.vignetteSprite.y = this.targetSprite.screen_y;
     }
 }
