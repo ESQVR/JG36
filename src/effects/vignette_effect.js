@@ -1,4 +1,4 @@
-const ZERO_SCALE = 0.2;
+const ZERO_SCALE = 0.05;
 const ONE_SCALE = 1.0;
 
 export class VignetteEffect {
@@ -41,8 +41,13 @@ export class VignetteEffect {
         // Create vignette sprite
         this.vignetteSprite = this.scene.add.sprite(0, 0, 'vignetteTexture');
         this.vignetteSprite.setOrigin(.5);
-        this.vignetteSprite.setDepth(2);
+        this.vignetteSprite.setDepth(3);
         this.vignetteSprite.setScrollFactor(0);
+
+        this.super_vignette = this.scene.add.sprite(0, 0, 'vignetteTexture');
+        this.super_vignette.setOrigin(.5);
+        this.super_vignette.setDepth(2);
+        this.super_vignette.setScrollFactor(0);
         
         
     }
@@ -50,9 +55,13 @@ export class VignetteEffect {
     update(light_value) {
         //console.log(random_flicker, this.current_scale);
         this.vignetteSprite.setScale(ZERO_SCALE * (1 - light_value) + ONE_SCALE * light_value);
+        //this.vignetteSprite.setScale(.1);
 
         //follow target
         this.vignetteSprite.x = this.targetSprite.screen_x;
         this.vignetteSprite.y = this.targetSprite.screen_y;
+
+        this.super_vignette.x = this.targetSprite.screen_x;
+        this.super_vignette.y = this.targetSprite.screen_y;
     }
 }

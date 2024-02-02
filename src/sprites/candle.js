@@ -17,6 +17,9 @@ export class Candle extends Phaser.Physics.Arcade.Sprite {
         ...GlowEffect.getTextures()
       }
     }
+    getBounds() {
+      return new Phaser.Geom.Rectangle(this.x, this.y, this.width, this.height);
+    }
 
     constructor(scene, x, y) {
       console.log('candle constructor')
@@ -89,8 +92,9 @@ export class Candle extends Phaser.Physics.Arcade.Sprite {
             //reload the scene
             console.log('candle is out\n\n\n\n\n\n\n');
             this.scene.game.sound.stopAll();
-            this.scene.scene.restart();
-            this.destroy();
+            // this.destroy();
+            // console.log(this.scene);
+            this.scene.scene.start('DarknessScene');
             return;
         }
 

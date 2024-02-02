@@ -62,7 +62,7 @@ export class Enemy extends Phaser.Physics.Arcade.Sprite {
 	update(player) {
 		const disToCandle = Phaser.Math.Distance.Between(this.x, this.y, player.candle.x, player.candle.y);
 		const currSpeed = this.slowSpeedEquation(disToCandle);
-		if (currSpeed < 60) {
+		if (currSpeed < 30) {
 			this.anims.play('idle-enemy', true);
 		} else {
 			this.anims.play('walk-enemy', true);

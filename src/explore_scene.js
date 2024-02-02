@@ -66,6 +66,18 @@ export class ExploreScene extends Phaser.Scene {
         //return if candle is held
         if (this.spriteManager.player.candle.candleHeld == true) return;
 
+        const scrollX = this.cameras.main.scrollX;
+        const scrollY = this.cameras.main.scrollY;
+        //return if mouse is on candle
+        console.log("Player: ", this.spriteManager.player);
+        console.log("Candle: ", this.spriteManager.player.candle);
+        console.log("Candle Bounds: ", this.spriteManager.player.candle.getBounds());
+        console.log("Pointer: ", pointer);
+        console.log("Pointer X: ", pointer.x);
+        console.log("Pointer Y: ", pointer.y);
+        console.log("Contains: ", this.spriteManager.player.candle.getBounds().contains(pointer.x, pointer.y));
+        if (this.spriteManager.player.candle.getBounds().contains(pointer.x + scrollX, pointer.y + scrollX)) return;
+
         // Do something with the clicked tile information
         console.log(`Clicked tile: ${tileX}, ${tileY}`);
         const formatted_string = `Tile ID: ${clickedTile.index}`

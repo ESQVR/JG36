@@ -21,8 +21,8 @@ export class SpriteManager {
         console.log('Enemy touched the player\n\n\n\n\n');
         this.scene.game.sound.stopAll();
         enemy.destroy();
-        //restart the game HARD
-        this.scene.scene.restart();
+        //go to darkness scene
+        this.scene.scene.start('DarknessScene');
 
       }
     createCharacter(x, y) {
