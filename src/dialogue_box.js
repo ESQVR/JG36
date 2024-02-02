@@ -25,7 +25,7 @@ export class DialogueBox {
 		// Create dialogue box sprites and position them
 		this._dialogueBoxSprite = scene.add.sprite(x, y, 'dialogueBoxBackground');
         this._dialogueBoxSprite.setOrigin(0, 0);
-		this._messageText = scene.add.text(x, y + 20, message, {fontSize: 20});
+		this._messageText = scene.add.text(x + 5, y + 20, message, {fontSize: 20, color: '#100000'});
 
 		// scroll factor to zero
 		this._dialogueBoxSprite.setScrollFactor(0);

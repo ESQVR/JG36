@@ -3,15 +3,8 @@ const ONE_SCALE = 1.0;
 
 export class VignetteEffect {
     static preload(scene) {
-        scene.load.image('vignetteTexture', 'assets/visibility_mask_noColor.png');
+        scene.load.image('vignetteTexture', 'assets/glowMask_oversized.png');
     }
-
-    static getTextures() {
-        return {
-            "vignetteTexture": "assets/visibility_mask_noColor.png",
-        }
-    }
-
     constructor(scene, targetSprite) {
         this.scene = scene;
         this.targetSprite = targetSprite;
