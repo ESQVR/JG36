@@ -1,6 +1,5 @@
 import { Candle } from './candle.js'; // Import the Candle class
 
-
 export class Character extends Phaser.Physics.Arcade.Sprite {
     static preload(scene) {
         scene.load.image('character', 'assets/char.png');
@@ -48,6 +47,7 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
 
         this.cursors = this.scene.input.keyboard.addKeys('W,A,S,D');
         this.scene.physics.add.collider(this, this.scene.dungeonManager.groundLayer);
+        this.scene.physics.add.collider(this, this.scene.dungeonManager.stuffLayer);
         this.setScale(.75);
 
         

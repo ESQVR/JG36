@@ -17,8 +17,11 @@ export class SpriteManager {
     }
 
     handlePlayerEnemyCollision(player, enemy) {
-        console.log('Enemy touched the player');
+        console.log('Enemy touched the player\n\n\n\n\n');
         enemy.destroy();
+        //restart the game HARD
+        this.scene.scene.restart();
+
       }
     createCharacter(x, y) {
         console.log('Creating character');

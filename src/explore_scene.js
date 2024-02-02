@@ -76,7 +76,18 @@ export class ExploreScene extends Phaser.Scene {
 
         const boxX = this.cameras.main.centerX - 50;
         const boxY = this.cameras.main.centerY - 50;
-        const dialogue = new DialogueBox(this, formatted_string, boxX, boxY);
+
+        let data = "farce";
+        if (clickedTile.index == 81) {
+          data = "Pentagram Clue";
+        } else if (clickedTile.index == 205 || clickedTile.index == 186) {
+          data = "Pillar\nClue";
+        } else if (clickedTile.index == 166)
+        {
+          data = "Book Clue";
+        }
+        else {data = formatted_string;}
+        const dialogue = new DialogueBox(this, data, boxX, boxY);
       }
     });
   }

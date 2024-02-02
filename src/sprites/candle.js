@@ -84,6 +84,10 @@ export class Candle extends Phaser.Physics.Arcade.Sprite {
   
     update() {
         if (this.vitality <= 0) {
+            //reload the scene
+            console.log('candle is out\n\n\n\n\n\n\n');
+            this.game.sound.stopAll();
+            this.scene.scene.restart();
             this.destroy();
             return;
         }
