@@ -20,6 +20,10 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
         super(scene, x, y, 'player');
 
+        // Create the candle
+        console.log('Creating candle at', x, y, 'in character.js');
+        this.candle = new Candle(scene, x, y);
+
         const anims = scene.anims;
         this.anims.create({
             key: 'idle',
@@ -46,8 +50,7 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.add.collider(this, this.scene.dungeonManager.groundLayer);
         this.setScale(.75);
 
-        // Create the candle
-        this.candle = new Candle(scene, this.x, this.y);
+        
         
     }
 

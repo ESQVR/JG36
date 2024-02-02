@@ -57,6 +57,9 @@ export class ExploreScene extends Phaser.Scene {
       const clickedTile = this.dungeonManager.map.getTileAt(tileX, tileY);
   
       if (clickedTile) {
+        //return if candle is held
+        if (this.spriteManager.player.candle.candleHeld == true) return;
+        
         // Do something with the clicked tile information
         console.log(`Clicked tile: ${tileX}, ${tileY}`);
         const formatted_string = `Tile ID: ${clickedTile.index}`
@@ -64,7 +67,7 @@ export class ExploreScene extends Phaser.Scene {
 
         // return if the tile index is undefined
         if (!clickedTile.index) return;
-        
+
         const boxX = this.cameras.main.centerX - 50;
         const boxY = this.cameras.main.centerY - 50;
         const dialogue = new DialogueBox(this, formatted_string, boxX, boxY);

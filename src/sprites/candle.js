@@ -19,6 +19,7 @@ export class Candle extends Phaser.Physics.Arcade.Sprite {
     }
 
     constructor(scene, x, y) {
+      console.log('candle constructor')
       super(scene, x, y, 'candle');
   
       scene.add.existing(this);
@@ -98,6 +99,6 @@ export class Candle extends Phaser.Physics.Arcade.Sprite {
         this.vignetteEffect.update(this.lightLevel);
 
         //disable vignette effect
-        this.vignetteEffect.update(1000);
+        //this.vignetteEffect.update(1000);
     }
   }
