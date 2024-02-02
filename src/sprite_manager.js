@@ -1,5 +1,6 @@
 import { Character } from './sprites/character.js';
 import { Enemy } from './sprites/enemy.js';
+import { Candle } from './sprites/candle.js';
 
 export class SpriteManager {
     static preload(scene) {
@@ -34,6 +35,12 @@ export class SpriteManager {
     
         const camera = this.scene.cameras.main;
         camera.startFollow(this.scene.spriteManager.player);
+        camera.update();
+        
+        const candle_x = this.scene.game.input.mousePointer.x;
+        const candle_y = this.scene.game.input.mousePointer.y;
+        console.log('Creating my candle at', candle_x, candle_y, 'in character.js');
+        this.player.candle = new Candle(this.scene, candle_x, candle_y);
     }
     createEnemy(x, y) {
         const my_enemy = new Enemy(this.scene, x, y);

@@ -19,9 +19,9 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
         super(scene, x, y, 'player');
 
-        // Create the candle
-        console.log('Creating candle at', x, y, 'in character.js');
-        this.candle = new Candle(scene, x, y);
+        // Create the candle in sprite manager
+        this.candle = null;
+        
 
         const anims = scene.anims;
         this.anims.create({
@@ -53,6 +53,7 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     }
 
     update() {
+
         // Character movement
         if (this.cursors.A.isDown || this.cursors.LEFT.isDown) {
             this.setVelocityX(-200);
