@@ -21,6 +21,8 @@ export class Candle extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
       console.log('candle constructor')
       super(scene, x, y, 'candle');
+      //console.log(this.player.x, this.player.y);
+      console.log(this.x, this.y);
   
       scene.add.existing(this);
       scene.physics.add.existing(this);
@@ -34,8 +36,8 @@ export class Candle extends Phaser.Physics.Arcade.Sprite {
       this.setInteractive();
       //this.setScrollFactor(0);
       
-      this.screen_x = 0;
-      this.screen_y = 0;
+      this.screen_x = x;
+      this.screen_y = y;
 
       this.lightLevel = 1.0;
       this.vignetteEffect = new VignetteEffect(scene, this);
