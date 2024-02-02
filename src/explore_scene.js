@@ -39,8 +39,8 @@ export class ExploreScene extends Phaser.Scene {
     //this.cameras.main.setBackgroundColor(0x0000ff);
     console.log('ExploreScene created');
 
-    const main_music = this.sound.add('main_music', { loop: true });
-    main_music.play();
+    // const main_music = this.sound.add('main_music', { loop: true });
+    // main_music.play();
 
 
     // //spriteManager
