@@ -3,7 +3,7 @@ import { GlowEffect } from '../effects/glow_effect.js'; // Import the GlowEffect
 
 export class Candle extends Phaser.Physics.Arcade.Sprite {
     static preload(scene) {
-      scene.load.image('candle', 'assets/candle.png');
+      scene.load.image('candle', 'assets/Infernus_Candles_5.png');
       VignetteEffect.preload(scene);
       GlowEffect.preload(scene);
     }
@@ -31,7 +31,7 @@ export class Candle extends Phaser.Physics.Arcade.Sprite {
       scene.physics.add.existing(this);
   
       this.scene = scene;
-      this.setScale(0.3); // Adjust the scale as needed
+      this.setScale(1); // Adjust the scale as needed
       this.candleHeld = true;
       this.maxVitality = 500;
       this.vitality = this.maxVitality;
