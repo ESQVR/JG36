@@ -3,14 +3,7 @@ var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
 var book = [//maybe better name
-    'I love to sing because it\'s fun',
-    'where are you going',
-    'can I call you tomorrow',
-    'why did you talk while I was talking',
-    'she enjoys reading books and playing games',
-    'where are you going',
-    'have a great day',
-    'she sells seashells on the seashore'
+    'Let me enter the path of darkness'
 ];//idea maybe link incantation to a sound so if hear sound know that this is the incantation to say (order clue + calcul num of possibilities and memroy aspect of the game)
 
 var sound = [
@@ -70,7 +63,7 @@ function testSpeech() {
   spell.textContent = incantation;
   speech.value = 'Right or wrong?';
   speech.style.background = 'rgba(0,0,0,0.2)';
-  
+
   var grammar = '#JSGF V1.0; grammar speech; public <speech> = ' + speech +';';
   var recognition = new SpeechRecognition();
   var speechRecognitionList = new SpeechGrammarList();
@@ -79,9 +72,9 @@ function testSpeech() {
   recognition.lang = 'en-US';
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
-  
+
   recognition.start();
-  
+
   recognition.onresult = function(event) {
       /*
       The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
@@ -91,7 +84,7 @@ function testSpeech() {
       Each SpeechRecognitionResult object contains SpeechRecognitionAlternative objects that contain individual results.
       These also have getters so they can be accessed like arrays.
       The second [0] returns the SpeechRecognitionAlternative at position 0.
-      We then return the transcript property of the SpeechRecognitionAlternative object 
+      We then return the transcript property of the SpeechRecognitionAlternative object
       */
      var speechResult = event.results[0][0].transcript.toLowerCase().replace(/[.,\/#!$%?\^&\*;:{}=\-_`~()]/g,"");;///(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
      console.log(speechResult);
@@ -106,7 +99,7 @@ function testSpeech() {
         }
         console.log('Confidence: ' + event.results[0][0].confidence);
     }
-    
+
     recognition.onspeechend = function() {
     recognition.stop();
     button.disabled = false;
@@ -119,40 +112,40 @@ recognition.onerror = function(event) {
     speech.value = 'Error occurred in recognition: ' + event.error;
     speech.style.background = 'orange';
   }
-  
+
   recognition.onaudiostart = function(event) {
       //Fired when the user agent has started to capture audio.
       console.log('SpeechRecognition.onaudiostart');
   }
-  
+
   recognition.onaudioend = function(event) {
       //Fired when the user agent has finished capturing audio.
       console.log('SpeechRecognition.onaudioend');
   }
-  
+
   recognition.onend = function(event) {
       //Fired when the speech recognition service has disconnected.
       console.log('SpeechRecognition.onend');
   }
-  
+
   recognition.onnomatch = function(event) {
       /*
       Fired when the speech recognition service returns a final speech with no significant recognition.
-      This may involve some degree of recognition, which doesn't meet or exceed the confidence threshold. 
+      This may involve some degree of recognition, which doesn't meet or exceed the confidence threshold.
       */
       console.log('SpeechRecognition.onnomatch');
   }
-  
+
   recognition.onsoundstart = function(event) {
       //Fired when any sound — recognisable speech or not — has been detected.
       console.log('SpeechRecognition.onsoundstart');
   }
-  
+
   recognition.onsoundend = function(event) {
       //Fired when any sound — recognisable speech or not — has stopped being detected.
       console.log('SpeechRecognition.onsoundend');
   }
-  
+
   recognition.onspeechstart = function (event) {
       //Fired when sound that is recognised by the speech recognition service as speech has been detected.
       console.log('SpeechRecognition.onspeechstart');
