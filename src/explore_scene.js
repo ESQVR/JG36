@@ -79,12 +79,12 @@ export class ExploreScene extends Phaser.Scene {
 
         let data = "farce";
         if (clickedTile.index == 81) {
-          data = "Pentagram Clue";
+          data = "Let me enter";
         } else if (clickedTile.index == 205 || clickedTile.index == 186) {
-          data = "Pillar\nClue";
+          data = "The path";
         } else if (clickedTile.index == 166)
         {
-          data = "Book Clue";
+          data = "of Darkness";
         }
         else {data = formatted_string;}
         const dialogue = new DialogueBox(this, data, boxX, boxY);
