@@ -2,6 +2,11 @@ import { Candle } from './candle.js'; // Import the Candle class
 
 
 export class Character extends Phaser.Physics.Arcade.Sprite {
+    static preload(scene) {
+        scene.load.image('character', 'assets/char.png');
+        scene.load.spritesheet('player', 'assets/PlayerChar_50x50.png', { frameWidth: 50, frameHeight: 50,  });
+        Candle.preload(scene);
+    }
     static getTextures() {
         let my_needs ={
             "character": "assets/char.png",
@@ -13,18 +18,37 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
     }
 
     constructor(scene, x, y) {
-        super(scene, x, y, 'character');
+        super(scene, x, y, 'player');
+
+        const anims = scene.anims;
+        this.anims.create({
+            key: 'idle',
+            frames: this.anims.generateFrameNumbers('player', { start: 4, end: 4 }),
+            frameRate: 10,
+            repeat: -1
+        });
+        
+        this.anims.create({
+            key: 'walk',
+            frames: this.anims.generateFrameNumbers('player', { start: 4, end: 7 }),
+            frameRate: 10,
+            repeat: -1
+        });
+        this.anims.play('idle');
 
         scene.add.existing(this);
         scene.physics.add.existing(this);
 
         this.setInteractive();
-        this.setCollideWorldBounds(true);
+        //this.setCollideWorldBounds(true);
 
         this.cursors = this.scene.input.keyboard.addKeys('W,A,S,D');
+        this.scene.physics.add.collider(this, this.scene.dungeonManager.groundLayer);
+        this.setScale(.75);
 
         // Create the candle
-        this.candle = new Candle(scene, 400, 300);
+        this.candle = new Candle(scene, this.x, this.y);
+        
     }
 
     update() {
@@ -43,6 +67,12 @@ export class Character extends Phaser.Physics.Arcade.Sprite {
             this.setVelocityY(200);
         } else {
             this.setVelocityY(0);
+        }
+        // update animation
+        if (this.body.velocity.x !== 0 || this.body.velocity.y !== 0) {
+            this.anims.play('walk', true);
+        } else {
+            this.anims.play('idle', true);
         }
         
         // Update the candle

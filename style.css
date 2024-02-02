@@ -1,4 +1,62 @@
+body, html {
+  margin: 0;
+}
+
 html {
   height: 100%;
+  background-color: grey;
+}
+
+body {
+  height: inherit;
+  overflow: hidden;
+}
+
+h1, p {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+div p {
+  padding: 20px;
+  background-color: rgba(0,0,0,0.2);
+}
+
+div {
+  overflow: auto;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+input[type="text"] {
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0,0,0,0.2);
+  border: none;
+  outline: none;
   width: 100%;
+}
+
+button {
+  background-color: rgba(0,0,0,0.2);
+  margin: 0 auto;
+  display: block;
+  font-size: 1.1rem;
+  width: 150px;
+  line-height: 2;
+  margin-top: 30px;
+}
+
+@media all and (max-height: 410px) {
+  div {
+    position: static;
+  }
+}
+
+.spell {
+  font-weight: bold;
 }

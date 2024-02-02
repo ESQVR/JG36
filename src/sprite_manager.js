@@ -2,6 +2,13 @@ import { Character } from './sprites/character.js';
 import { Enemy } from './sprites/enemy.js';
 
 export class SpriteManager {
+    static preload(scene) {
+        console.log(Character);
+        console.log(Enemy);
+        Character.preload(scene);
+        Enemy.preload(scene);
+    }
+
     constructor(scene) {
         this.scene = scene;
         this.player = null;
@@ -20,6 +27,9 @@ export class SpriteManager {
         }
         this.player = new Character(this.scene, x, y);
         this.scene.physics.add.collider(this.player, this.enemies, this.handlePlayerEnemyCollision, null, this);
+    
+        const camera = this.scene.cameras.main;
+        camera.startFollow(this.scene.spriteManager.player);
     }
     createEnemy(x, y) {
         const my_enemy = new Enemy(this.scene, x, y);
@@ -31,6 +41,9 @@ export class SpriteManager {
         }
 
         this.enemies.getChildren().forEach(enemy => {
+            if (!this.player) {
+                return;
+            }
             enemy.update(this.player);
         });
     }
