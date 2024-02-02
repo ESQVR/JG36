@@ -1,12 +1,15 @@
 import { ExploreScene } from './src/explore_scene.js';
+
+const SIZE_WIDTH_SCREEN = innerWidth
+const SIZE_HEIGHT_SCREEN = window.innerHeight
 import { StartScene } from './src/start_scene.js';
 import { SecondScene } from './src/start_scene.js'; 
 import { DarknessScene } from './src/darkness_scene.js';
 
 const config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: SIZE_WIDTH_SCREEN,
+    height: SIZE_HEIGHT_SCREEN,
     scene: StartScene,
     physics: {
       default: 'arcade',
@@ -14,6 +17,15 @@ const config = {
         gravity: { y: 0 },
         debug: false,
       },
+    },
+    scale: {
+      mode: Phaser.Scale.RESIZE,
+      parent: 'game',
+      width: SIZE_WIDTH_SCREEN,
+      height: SIZE_HEIGHT_SCREEN,
+    },
+    dom: {
+      createContainer: true
     },
   };
   
@@ -23,4 +35,11 @@ const config = {
   game.scene.add('SecondScene', new SecondScene());
   game.scene.add('DarknessScene', new DarknessScene());
 
-  const maxDistance = 200;
+  const maxDistance = 200;// value never read
+
+  game.screenBaseSize = {
+    width: SIZE_WIDTH_SCREEN,
+    height: SIZE_HEIGHT_SCREEN
+}
+
+game.orientation = "portrait"
